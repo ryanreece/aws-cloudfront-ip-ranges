@@ -22,33 +22,18 @@ poetry install
 poetry run python aws_cloudfront_ip_ranges/aws_cloudfront_ip_ranges.py
 ```
 
-## Results Example
+## One liner with curl + jq
 
+If you want a quick and easy way to retrieve the CloudFront or any other service ip address, simply use curl to download the file and then parse the data using `jq`.
+
+### Get IPv4 CloudFront Addresses
+
+```bash
+curl -s https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix'
 ```
-Found ### CloudFront IPv4 ranges.
-120.52.22.96/27
-205.251.249.0/24
-180.163.57.128/26
-204.246.168.0/22
-111.13.171.128/26
-18.160.0.0/15
-205.251.252.0/23
-54.192.0.0/16
-204.246.173.0/24
-54.230.200.0/21
-120.253.240.192/26
-116.129.226.128/26
-130.176.0.0/17
-108.156.0.0/14
-44.234.90.252/30
--- More --
 
-Found ## CloudFront IPv6 IP ranges.
-2600:9000:3000::/36
-2600:9000:f600::/39
-2600:9000:f540::/42
-2409:8c00:2421:300::/56
-2600:9000:f000::/38
-2600:9000:f500::/43
--- More --
+### Get IPv4 CloudFront Addresses
+
+```bash
+curl -s https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ipv6_prefix'
 ```
