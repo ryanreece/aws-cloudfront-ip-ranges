@@ -32,7 +32,7 @@ If you want a quick and easy way to retrieve the CloudFront or any other service
 curl -s https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix'
 ```
 
-### Get IPv4 CloudFront Addresses
+### Get IPv6 CloudFront Addresses
 
 ```bash
 curl -s https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ipv6_prefix'
